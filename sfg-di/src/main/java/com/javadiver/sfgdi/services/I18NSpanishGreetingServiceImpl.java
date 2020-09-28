@@ -7,10 +7,15 @@ import org.springframework.stereotype.Service;
 @Service("i18NService")
 public class I18NSpanishGreetingServiceImpl implements GreetingService {
 
-	@Override
-	public String sayGreeting() {
-		// TODO Auto-generated method stub
-		return "Hola - Spanish";
-	}
+    private GreetingRepository greetingRepository;
+
+    public I18NSpanishGreetingServiceImpl(GreetingRepository greetingRepository) {
+        this.greetingRepository = greetingRepository;
+    }
+
+    @Override
+    public String sayGreeting() {
+        return greetingRepository.getSpanishGreeting();
+    }
 
 }
